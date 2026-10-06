@@ -1,0 +1,84 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPC2kexH/CwBBvD4hwvTuBV",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Eshankulov/cs-31-24-Adenov/blob/main/%D1%83%D0%BF%D1%80%D0%B2%D0%B6%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5%204%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "a0GpRcpMsFVI",
+        "outputId": "dbb1e679-fcf3-4f1e-eed2-8b4576fdc4eb"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Исходные числа:\n",
+            "[84 17 47 26 63 68 67 14 82  4]\n",
+            "\n",
+            "Цифры десятков:\n",
+            "0    8\n",
+            "1    1\n",
+            "2    4\n",
+            "3    2\n",
+            "4    6\n",
+            "5    6\n",
+            "6    6\n",
+            "7    1\n",
+            "8    8\n",
+            "9    0\n",
+            "dtype: int64\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "# Создаём 10 случайных чисел от 0 до 99\n",
+        "numbers = np.random.randint(0, 100, 10)\n",
+        "\n",
+        "# Получаем цифры десятков\n",
+        "tens = numbers // 10\n",
+        "\n",
+        "# Создаём Series\n",
+        "series = pd.Series(tens)\n",
+        "\n",
+        "# Выводим результат\n",
+        "print(\"Исходные числа:\")\n",
+        "print(numbers)\n",
+        "\n",
+        "print(\"\\nЦифры десятков:\")\n",
+        "print(series)"
+      ]
+    }
+  ]
+}
