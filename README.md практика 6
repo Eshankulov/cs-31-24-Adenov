@@ -1,0 +1,41 @@
+# Initial Data Analysis — Tips Dataset
+
+## Project Description
+This project performs an initial analysis of a restaurant tips dataset using Python and Pandas.
+
+## Environment
+Google Colab was chosen because it provides a ready-to-use Python environment without requiring local installation.
+
+## Project Structure
+```text
+initial-data-analysis/
+├── data/
+│   └── tips.csv
+├── notebooks/
+│   └── 01_initial_analysis.ipynb
+└── README.md
+```
+
+## Dataset
+The dataset contains information about restaurant bills, tips, customers, days, and meal times.
+
+## Analysis
+- Dataset dimensions
+- Column data types
+- Missing values
+- Basic descriptive statistics
+- Histogram of total bills
+- Bar chart of visits by day
+- Three observations about the data
+
+## Tools
+- Python
+- Pandas
+- Matplotlib
+- Google Colab
+
+## How to Run
+1. Open the notebook in Google Colab.
+2. Run the cells from top to bottom.
+3. The dataset is loaded from a public URL.
+
