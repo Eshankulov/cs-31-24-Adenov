@@ -1140,40 +1140,6 @@
    "cell_type": "code",
    "source": [
     "\n",
-    "print(\"SRTF на set1:\")\n",
-    "srtf_result = simulate(set1, \"SRTF\")\n",
-    "print(srtf_result)\n",
-    "\n",
-    "print(\"\\nRR на set1, quantum=3:\")\n",
-    "rr_result = simulate(set1, \"RR\", quantum=3)\n",
-    "print(rr_result)\n"
-   ],
-   "metadata": {
-    "colab": {
-     "base_uri": "https://localhost:8080/"
-    },
-    "id": "jbC2kcdNxnKQ",
-    "outputId": "19cec34b-7482-4c9d-f0aa-2f3b73bab3f4"
-   },
-   "execution_count": 12,
-   "outputs": [
-    {
-     "output_type": "stream",
-     "name": "stdout",
-     "text": [
-      "SRTF на set1:\n",
-      "[(0, 2, 'P1'), (2, 4, 'P2'), (4, 5, 'P3'), (5, 7, 'P2'), (7, 11, 'P4'), (11, 16, 'P1')]\n",
-      "\n",
-      "RR на set1, quantum=3:\n",
-      "[(0, 3, 'P1'), (3, 6, 'P2'), (6, 9, 'P1'), (9, 10, 'P3'), (10, 13, 'P4'), (13, 14, 'P2'), (14, 15, 'P1'), (15, 16, 'P4')]\n"
-     ]
-    }
-   ]
-  },
-  {
-   "cell_type": "code",
-   "source": [
-    "\n",
     "results = []\n",
     "\n",
     "for name, timeline in [\n",
@@ -1199,67 +1165,6 @@
     },
     "id": "ZmtecO8ExvEb",
     "outputId": "ba91f065-3264-4cbc-fcc1-9caef294f307"
-   },
-   "execution_count": null,
-   "outputs": []
-  },
-  {
-   "cell_type": "code",
-   "source": [
-    "\n",
-    "rr_results = []\n",
-    "\n",
-    "for q in range(1, 11):\n",
-    "    timeline = simulate(set2, \"RR\", quantum=q)\n",
-    "    metrics = calculate_metrics(set2, timeline)\n",
-    "\n",
-    "    rr_results.append({\n",
-    "        \"Quantum\": q,\n",
-    "        \"Average Waiting\": metrics[\"avg_waiting\"],\n",
-    "        \"Context Switches\": count_switches(timeline),\n",
-    "    })\n",
-    "\n",
-    "rr_df = pd.DataFrame(rr_results)\n",
-    "\n",
-    "display(rr_df.round(2))\n",
-    "\n",
-    "fig, ax1 = plt.subplots(figsize=(10, 5))\n",
-    "\n",
-    "ax1.plot(\n",
-    "    rr_df[\"Quantum\"],\n",
-    "    rr_df[\"Average Waiting\"],\n",
-    "    marker=\"o\",\n",
-    "    label=\"Среднее ожидание\"\n",
-    ")\n",
-    "ax1.set_xlabel(\"Квант времени\")\n",
-    "ax1.set_ylabel(\"Среднее ожидание\")\n",
-    "ax1.set_xticks(range(1, 11))\n",
-    "ax1.grid(True)\n",
-    "\n",
-    "ax2 = ax1.twinx()\n",
-    "ax2.plot(\n",
-    "    rr_df[\"Quantum\"],\n",
-    "    rr_df[\"Context Switches\"],\n",
-    "    marker=\"s\",\n",
-    "    label=\"Переключения\"\n",
-    ")\n",
-    "ax2.set_ylabel(\"Количество переключений\")\n",
-    "\n",
-    "lines1, labels1 = ax1.get_legend_handles_labels()\n",
-    "lines2, labels2 = ax2.get_legend_handles_labels()\n",
-    "ax1.legend(lines1 + lines2, labels1 + labels2, loc=\"best\")\n",
-    "\n",
-    "plt.title(\"Round Robin: влияние кванта на ожидание и переключения\")\n",
-    "plt.tight_layout()\n",
-    "plt.show()\n"
-   ],
-   "metadata": {
-    "colab": {
-     "base_uri": "https://localhost:8080/",
-     "height": 853
-    },
-    "id": "1uF_yFKUx_00",
-    "outputId": "09e83c90-5678-4dd6-f6af-683787d0cbd1"
    },
    "execution_count": null,
    "outputs": []
