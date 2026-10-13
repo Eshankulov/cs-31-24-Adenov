@@ -36,4 +36,4 @@ Context switches count transitions between two different running processes. Tran
 ## Expected interpretation
 A smaller Round Robin quantum generally causes more process switches and can improve responsiveness. A larger quantum usually reduces switching overhead but can increase waiting for some processes. Aging improves fairness by increasing the effective priority of processes that have waited for a long time.
 
-> Note: Saved outputs for the context-switch calculation were cleared after correcting the function. Run the entire notebook before submission so all tables and charts reflect the updated code.
+> Note: Saved outputs for the affected Round Robin experiment and metric-comparison cells were cleared after correcting the function. Run the entire notebook before submission so all tables and charts reflect the updated code.
