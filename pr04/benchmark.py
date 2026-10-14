@@ -67,22 +67,21 @@ def network_benchmark(base_url):
     print("\nNetwork I/O test: 20 local HTTP URLs")
     results = {}
 
-    result, results["sequential"] = measure(
+    sequential_result, results["sequential"] = measure(
         "Sequential", lambda: [fetch_size(url) for url in urls])
 
     def threaded():
         with ThreadPoolExecutor(max_workers=4) as pool:
             return list(pool.map(fetch_size, urls))
-    result, results["ThreadPoolExecutor"] = measure("ThreadPoolExecutor", threaded)
+    threaded_result, results["ThreadPoolExecutor"] = measure("ThreadPoolExecutor", threaded)
 
     def processes():
         with ProcessPoolExecutor(max_workers=4) as pool:
             return list(pool.map(fetch_size, urls))
-    result, results["ProcessPoolExecutor"] = measure("ProcessPoolExecutor", processes)
+    process_result, results["ProcessPoolExecutor"] = measure("ProcessPoolExecutor", processes)
 
-    assert all(sum(result) == sum(fetch_size(url) for url in urls)
-               for result in [ [fetch_size(url) for url in urls] ])
-    print("All three approaches fetched the 20 files.")
+    assert sequential_result == threaded_result == process_result, "Fetched file sizes differ"
+    print("All three approaches fetched the same 20 files.")
     return results
 
 def main():
