@@ -1,0 +1,5 @@
+2026-02-14 10:31:02 ERROR module=net msg=connection failed
+2026-02-14 10:31:03 WARN module=net msg=retrying
+2026-02-14 10:32:00 ERROR module=auth msg=bad token
+2026-02-14 10:33:00 ERROR module=net msg=timeout
+2026-02-14 10:34:00 WARN module=disk msg=space low
