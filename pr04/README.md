@@ -11,7 +11,7 @@ python3 benchmark.py --n 10000000 --repeats 3
 Для локальной I/O-задачи в отдельном терминале:
 ```bash
 python3 generate_pages.py
-python3 -m http.server 8000 --directory webdata
+python3 serve_pages.py
 ```
 В каталоге практики уже лежит `urls.txt` с 20 локальными URL. Запустите benchmark из другого терминала. Если вы меняете адреса, оставьте по одному URL на строку.
 
