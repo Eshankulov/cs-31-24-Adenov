@@ -17,13 +17,15 @@ class SemaphoreRing:
         self.mutex = threading.Lock()
         self.empty = threading.Semaphore(capacity)
         self.full = threading.Semaphore(0)
+        self.size = 0
         self.max_size = 0
     def put(self, item):
         self.empty.acquire()
         with self.mutex:
             self.data[self.write_i] = item
             self.write_i = (self.write_i + 1) % self.capacity
-            self.max_size = min(self.capacity, self.max_size + 1)
+            self.size += 1
+            self.max_size = max(self.max_size, self.size)
         self.full.release()
     def get(self):
         self.full.acquire()
@@ -31,7 +33,7 @@ class SemaphoreRing:
             item = self.data[self.read_i]
             self.data[self.read_i] = None
             self.read_i = (self.read_i + 1) % self.capacity
-            self.max_size = max(0, self.max_size - 1)
+            self.size -= 1
             return item
 
 class ConditionRing:
